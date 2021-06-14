@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/Baizch/budget-tracker-app-rework/issues"
   },
-  "homepage": "https://github.com/Baizch/budget-tracker-app-rework#readme"
+  "homepage": "https://github.com/Baizch/budget-tracker-app-rework#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
 }
