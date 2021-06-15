@@ -8,6 +8,10 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use('/', indexRouter);
 
-app.listen(3000, () => {
-  console.log('Server is up and running!');
-});
+try {
+  app.listen(3000, () => {
+    console.log('Server is up and running!');
+  });
+} catch (err) {
+  console.log('error: error.message');
+}
