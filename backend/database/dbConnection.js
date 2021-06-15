@@ -11,7 +11,7 @@ try {
     console.log('Database connected!');
   });
 } catch (err) {
-  console.log('err: err.message');
+  console.log({ err: err.message });
 }
 
 module.exports = connection;

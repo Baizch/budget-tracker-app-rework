@@ -14,5 +14,5 @@ try {
     console.log('Server is up and running!');
   });
 } catch (err) {
-  console.log('error: error.message');
+  console.log({ err: error.message });
 }
