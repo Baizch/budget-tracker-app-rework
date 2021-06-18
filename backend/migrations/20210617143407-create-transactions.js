@@ -6,31 +6,23 @@ module.exports = {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
       },
       concepto: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       monto: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
       },
       fecha: {
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
       },
       tipo: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
-      createdAt: {
-        allowNull: false,
-        type: Sequelize.DATE
-      },
-      updatedAt: {
-        allowNull: false,
-        type: Sequelize.DATE
-      }
     });
   },
   down: async (queryInterface, Sequelize) => {
     await queryInterface.dropTable('Transactions');
-  }
+  },
 };
