@@ -28,7 +28,7 @@ const getTransaction = async (req, res) => {
     if (transaction) {
       res.status(200).json(transaction);
     } else {
-      res.status(404).json({ error: 'Transaction not found' });
+      res.status(404).json({ message: 'Transaction not found' });
     }
   } catch (err) {
     res.status(400).json({ error: err.message });
