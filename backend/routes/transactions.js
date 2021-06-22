@@ -3,6 +3,7 @@ const {
   getTransactions,
   getTransaction,
   deleteTransaction,
+  createTransaction,
 } = require('../controllers/transactions');
 const notEmpty = require('../middlewares/fieldNotEmpty');
 
@@ -17,5 +18,13 @@ transactionsRouter.get('/:id', getTransaction);
 transactionsRouter.delete('/:id', deleteTransaction);
 
 //POST & PUT routes
+transactionsRouter.post(
+  '/',
+  createTransaction
+  /*notEmpty('concepto'),
+  notEmpty('monto'),
+  notEmpty('fecha'),
+  notEmpty('tipo')*/
+);
 
 module.exports = transactionsRouter;
