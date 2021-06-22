@@ -65,10 +65,50 @@ const deleteTransaction = async (req, res) => {
   }
 };
 
+//POST - Works
+/*const createTransaction = async (req, res) => {
+  //const body = req.body;
+  try {
+    const { concepto, monto, fecha, tipo } = await Transactions.create({
+      concepto: req.body.concepto,
+      monto: req.body.monto,
+      fecha: req.body.fecha,
+      tipo: req.body.tipo,
+      /*attributes: {
+        exclude: ['createdAt', 'updatedAt'],
+      },
+    });
+    const transaction = { concepto, monto, fecha, tipo };
+
+    res.status(201).json(transaction);
+  } catch (err) {
+    res.status(400).json({ error: err.message });
+  }
+};*/
+
+//POST V2- Works as well
+const createTransaction = async (req, res) => {
+  const body = req.body;
+  try {
+    const transationToCreate = await Transactions.build({
+      concepto: body.concepto,
+      monto: body.monto,
+      fecha: body.fecha,
+      tipo: body.tipo,
+    });
+    transationToCreate.save();
+
+    res.status(201).json(transationToCreate);
+  } catch (err) {
+    res.status(400).json({ error: err.message });
+  }
+};
+
 const transactionsController = {
   getTransactions,
   getTransaction,
   deleteTransaction,
+  createTransaction,
 };
 
 module.exports = transactionsController;
