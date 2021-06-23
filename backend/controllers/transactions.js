@@ -74,9 +74,6 @@ const deleteTransaction = async (req, res) => {
       monto: req.body.monto,
       fecha: req.body.fecha,
       tipo: req.body.tipo,
-      /*attributes: {
-        exclude: ['createdAt', 'updatedAt'],
-      },
     });
     const transaction = { concepto, monto, fecha, tipo };
 
@@ -104,11 +101,46 @@ const createTransaction = async (req, res) => {
   }
 };
 
+//PUT
+const updateTransaction = async (req, res) => {
+  const id = req.params.id;
+  const body = req.body;
+  const transaction = await Transactions.findOne({
+    where: {
+      id,
+    },
+    attributes: {
+      exclude: ['createdAt', 'updatedAt'],
+    },
+  });
+  if (transaction) {
+    try {
+      const transactionToUpdate = await Transactions.update(
+        {
+          concepto: body.concepto,
+          monto: body.monto,
+          fecha: body.fecha,
+          tipo: body.tipo,
+        },
+        {
+          where: { id },
+        }
+      );
+      res.status(202).json(transactionToUpdate);
+    } catch (err) {
+      res.status(400).json({ error: err.message });
+    }
+  } else {
+    res.status(404).json({ message: 'Transaction not found' });
+  }
+};
+
 const transactionsController = {
   getTransactions,
   getTransaction,
   deleteTransaction,
   createTransaction,
+  updateTransaction,
 };
 
 module.exports = transactionsController;
